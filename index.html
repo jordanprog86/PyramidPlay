@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyramidPlay - Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src ="icons/logo.svg">
+        </div><br>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Favorites</a></li>
+                <li class="nav-divider"></li>
+                <li class="nav-header">Playlists</li>
+                <li><a href="#"><i class="fas fa-plus"></i> Create Playlist</a></li>
+                <li><a href="#"><i class="fas fa-thumbs-up"></i> Liked Songs</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Recently Played</a></li>
+                <li class="nav-divider"></li>
+                <li class="nav-header">Account</li>
+                <li><a href="#"><i class="fas fa-user"></i> Login</a></li>
+                <li><a href="#"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                <li class="nav-divider"></li>
+                <li class="nav-header">Language</li>
+                <li><a href="#"><i class="fas fa-globe"></i> English</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> Español</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> Français</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> Deutsch</a></li>
+                <li><a href="#"><i class="fas fa-globe"></i> 日本語</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <div class="main-content">
+        <header>
+            <img src ="icons/logo.svg">
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+           
+            <div class="search-bar">
+                <input type="text" placeholder="Search for music...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+          
+        </header>
+
+        <main>
+            <div class="music-grid">
+                <!-- Pop Music -->
+                <div class="music-item" data-src="music/pop1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/eyango.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Mentalite Africaine</h3>
+                    <p>Prince Eyango</p>
+                </div>
+                <div class="music-item" data-src="music/pop2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/kareyce.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Mokte</h3>
+                    <p>Kareyce Fotso</p>
+                </div>
+
+                <!-- Rock Music -->
+                <div class="music-item" data-src="music/rock1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/mbango.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Essuw'am</h3>
+                    <p>Charlotte Mbango</p>
+                </div>
+                <div class="music-item" data-src="music/soa.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/kareyce2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Kwegne</h3>
+                    <p>Kareyce Fotso</p>
+                </div>
+
+                <!-- Hip Hop -->
+                <div class="music-item" data-src="music/hiphop1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/locko.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Ndutu</h3>
+                    <p>Locko</p>
+                </div>
+                <div class="music-item" data-src="music/clavie.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/dikongue.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>C'est la vie
+                    </h3>
+                    <p>Henri Dikongué</p>
+                </div>
+
+                <!-- Electronic -->
+                <div class="music-item" data-src="music/sawa.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bendecca.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Tourbillon</h3>
+                    <p>Ben Decca</p>
+                </div>
+                <div class="music-item" data-src="music/electronic2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/charlotte1.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Dube l'am</h3>
+                    <p>Charlotte Dipanda</p>
+                </div>
+
+                <!-- Jazz -->
+                <div class="music-item" data-src="music/ndolo.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/charlotte2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Massa</h3>
+                    <p>Charlotte Dipanda</p>
+                </div>
+                <div class="music-item" data-src="music/jazz2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/ladyponce.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Patrimoine</h3>
+                    <p>Lady Ponce</p>
+                </div>
+
+                <!-- Classical -->
+                <div class="music-item" data-src="music/classical1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/ladyponce2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Bombe A</h3>
+                    <p>Lady Ponce</p>
+                </div>
+                <div class="music-item" data-src="music/classical2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/krysm.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Chacun sa chance</h3>
+                    <p>Krys M</p>
+                </div>
+
+                <!-- R&B -->
+                <div class="music-item" data-src="music/rnb1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/magasco.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Golden Boy</h3>
+                    <p>Magasco</p>
+                </div>
+                <div class="music-item" data-src="music/rnb2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bailly.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Mine</h3>
+                    <p>Blanche Bailly</p>
+                </div>
+
+                <!-- Country -->
+                <div class="music-item" data-src="music/trouverlavie.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/petitpays.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Trouver la vie</h3>
+                    <p>Petit Pays</p>
+                </div>
+                <div class="music-item" data-src="music/country2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/petitpays2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Frotambo</h3>
+                    <p>Petit Pays</p>
+                </div>
+
+                <!-- Indie -->
+                <div class="music-item" data-src="music/indie1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/sam.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>African Typic Collection</h3>
+                    <p> Sam Fan Thomas</p>
+                </div>
+                <div class="music-item" data-src="music/indie2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/jovi.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>God Don Kam</h3>
+                    <p>Jovie</p>
+                </div>
+
+                <!-- Metal -->
+                <div class="music-item" data-src="music/metal1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/jovi2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Mboko God</h3>
+                    <p>Jovi</p>
+                </div>
+                <div class="music-item" data-src="music/metal2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/mimie.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Faya</h3>
+                    <p>Mimie</p>
+                </div>
+
+                <!-- Folk -->
+                <div class="music-item" data-src="music/folk1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/mimie2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Soundsation</h3>
+                    <p>Mimie</p>
+                </div>
+                <div class="music-item" data-src="music/folk2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/rinyu.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Dreamy Eyes</h3>
+                    <p>Rinyu</p>
+                </div>
+
+                <!-- Soul -->
+                <div class="music-item" data-src="music/soul1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/kocee.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Deux oeufs spaghetti</h3>
+                    <p>Ko-c</p>
+                </div>
+                <div class="music-item" data-src="music/soul2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/reniss.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Tendon</h3>
+                    <p>RENISS</p>
+                </div>
+
+                <!-- Blues -->
+                <div class="music-item" data-src="music/blues1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/henridikonge.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Wa</h3>
+                    <p>Henri Dikongué</p>
+                </div>
+              
+                <!-- Reggae -->
+                <div class="music-item" data-src="music/reggae1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/locko2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Cloud Nine</h3>
+                    <p>Locko</p>
+                </div>
+                <div class="music-item" data-src="music/reggae2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/salatiel.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Anita</h3>
+                    <p>Salatiel</p>
+                </div>
+
+                <!-- Latin -->
+                <div class="music-item" data-src="music/latin1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/salatiel3.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Family Man</h3>
+                    <p>Salatiel</p>
+                </div>
+                <div class="music-item" data-src="music/latin2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/salatiel2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Africa Represented</h3>
+                    <p>Salatiel</p>
+                </div>
+
+                <!-- K-Pop -->
+                <div class="music-item" data-src="music/kpop1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/stanley.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>PROBLEMS</h3>
+                    <p>Stanley Enow</p>
+                </div>
+                <div class="music-item" data-src="music/kpop2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/gracedeca.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Doï La Mulema</h3>
+                    <p>Grace Decca</p>
+                </div>
+
+                <!-- World Music -->
+                <div class="music-item" data-src="music/world1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/gracedeca2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Appelle-moi Princesse</h3>
+                    <p>Grace Decca</p>
+                </div>
+                <div class="music-item" data-src="music/world2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/eyango2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Metamorphose</h3>
+                    <p>Prince Eyango</p>
+                </div>
+
+                <!-- Gospel -->
+                <div class="music-item" data-src="music/gospel1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bona.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Scenes From My Life</h3>
+                    <p>Richard Bona</p>
+                </div>
+                <div class="music-item" data-src="music/gospel2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bona2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Tiki</h3>
+                    <p>Richard Bona</p>
+                </div>
+
+                <!-- Punk -->
+                <div class="music-item" data-src="music/punk1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bona3.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Reverence</h3>
+                    <p>Richard Bona</p>
+                </div>
+                <div class="music-item" data-src="music/kalabancoro.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/bona4.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Munia (The Tale)</h3>
+                    <p>Richard Bona</p>
+                </div>
+
+                <!-- Alternative -->
+                <div class="music-item" data-src="music/alt1.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/tala.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Arabica</h3>
+                    <p>Tala André Marie</p>
+                </div>
+                <div class="music-item" data-src="music/alt2.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/tala2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Bend Skin</h3>
+                    <p>Tala André Marie</p>
+                </div>
+
+                <!-- More Pop -->
+                <div class="music-item" data-src="music/pop3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/mzambo.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Les meilleurs titres</h3>
+                    <p>Marthe Zambo</p>
+                </div>
+                <div class="music-item" data-src="music/pop4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/mzambo2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>
+                        Bikola</h3>
+                    <p>Marthe Zambo</p>
+                </div>
+
+                <!-- More Rock -->
+                <div class="music-item" data-src="music/rock3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/manu.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Africadelic</h3>
+                    <p>Manu Dibango</p>
+                </div>
+                <div class="music-item" data-src="music/rock4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/manu2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>African Voodoo</h3>
+                    <p>Manu Dibango</p>
+                </div>
+
+                <!-- More Hip Hop -->
+                <div class="music-item" data-src="music/hiphop3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/libianca.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>People</h3>
+                    <p>Libianca</p>
+                </div>
+                <div class="music-item" data-src="music/hiphop4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/libianca2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Walk Away</h3>
+                    <p>Libianca</p>
+                </div>
+
+                <!-- More Electronic -->
+                <div class="music-item" data-src="music/electronic3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/eboalotin.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>The Best Of, Vol. 1</h3>
+                    <p>Eboa Lotin</p>
+                </div>
+                <div class="music-item" data-src="music/electronic4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/kotto.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Soukous Fusion</h3>
+                    <p>Kotto Bass</p>
+                </div>
+
+                <!-- More Jazz -->
+                <div class="music-item" data-src="music/jazz3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/reniss2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>La Sauce</h3>
+                    <p>RENISS</p>
+                </div>
+                <div class="music-item" data-src="music/jazz4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/elvisk.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Best of 1 / Te revoir</h3>
+                    <p>Elvis Kemayo</p>
+                </div>
+
+                <!-- More Classical -->
+                <div class="music-item" data-src="music/classical3.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/elvisk2.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Vision</h3>
+                    <p>Elvis Kemayo</p>
+                </div>
+                <div class="music-item" data-src="music/classical4.mp3">
+                    <div class="thumbnail">
+                        <img src="thumbnails/longue.webp" alt="Album Cover">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h3>Privatisation</h3>
+                    <p>Longue Longue</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="player">
+                <div class="now-playing">
+                    <img src="images/album1.jpg" alt="Current Album" id="current-album">
+                    <div class="track-info">
+                        <h4 id="current-title">No track selected</h4>
+                        <p id="current-artist">-</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="prev"><i class="fas fa-backward"></i></button>
+                    <button id="play-pause"><i class="fas fa-play"></i></button>
+                    <button id="next"><i class="fas fa-forward"></i></button>
+                </div>
+                <div class="progress-bar">
+                    <span id="current-time">0:00</span>
+                    <div class="progress">
+                        <div class="progress-filled"></div>
+                    </div>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" id="volume" min="0" max="100" value="100">
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+</html> 

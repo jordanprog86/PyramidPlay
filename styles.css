@@ -1,0 +1,636 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #162A42;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background: #091D35;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    transform: translateX(-280px);
+}
+
+.sidebar.expanded {
+    transform: translateX(0);
+}
+
+.logo h1 {
+    color: #00ff88;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+    background: rgba(253, 172, 13, 0.1);
+    color: #FDAC0D;
+}
+
+.main-nav a.active {
+    background: rgba(253, 172, 13, 0.1);
+    color: #FDAC0D;
+}
+
+.main-nav i {
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-header {
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.nav-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: none;
+}
+
+header {
+    background: #091D35;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    order: -1;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.search-bar input {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    width: 300px;
+}
+
+.search-bar button {
+    background: #FDAC0D;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #162A42;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background: #e69b0c;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.music-item {
+    background: #091D35;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.music-item:hover {
+    transform: translateY(-5px);
+}
+
+.thumbnail {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 29, 53, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.music-item:hover .play-overlay {
+    opacity: 1;
+}
+
+.play-overlay i {
+    font-size: 2rem;
+    color: #FDAC0D;
+}
+
+.music-item h3 {
+    padding: 1rem 1rem 0.5rem;
+    font-size: 1rem;
+}
+
+.music-item p {
+    padding: 0 1rem 1rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+footer {
+    background: #091D35;
+    padding: 1rem 2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease;
+    left: 0;
+    z-index: 1200;
+}
+
+footer.expanded {
+    width: 100%;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 200px;
+}
+
+.now-playing img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.track-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.track-info p {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#play-pause {
+    background: #FDAC0D;
+    color: #162A42;
+}
+
+#play-pause:hover {
+    background: #e69b0c;
+}
+
+.progress-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-filled {
+    background: #FDAC0D;
+    height: 100%;
+    border-radius: 2px;
+    width: 0%;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 150px;
+}
+
+.volume-control i {
+    color: #FDAC0D;
+}
+
+.volume-control input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #FDAC0D;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+#current-time, #duration {
+    font-size: 0.8rem;
+    color: #888;
+    min-width: 40px;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+/* Add these new styles after the sidebar styles */
+
+.menu-toggle:hover {
+    color: #00ff88;
+}
+
+/* Overlay for sidebar */
+.menu-overlay {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 1500;
+    display: none;
+}
+.menu-overlay.active {
+    display: block;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+        transform: translateX(-220px);
+    }
+    .sidebar.expanded {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    header {
+        padding: 1rem 1rem;
+    }
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.7rem;
+        padding: 0.1rem;
+    }
+    .search-bar input {
+        width: 120px;
+        font-size: 0.9rem;
+    }
+    .search-bar button {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    .shuffle-button {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+    }
+    .player {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    .now-playing {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 0.3rem;
+    }
+    .now-playing img {
+        width: 32px;
+        height: 32px;
+    }
+    .controls {
+        justify-content: flex-start;
+        gap: 0.7rem;
+    }
+    .controls button {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95rem;
+    }
+    .progress-bar {
+        flex-direction: row;
+        gap: 0.3rem;
+        margin: 0.2rem 0;
+    }
+    .progress {
+        min-width: 60px;
+    }
+    .volume-control {
+        width: 100%;
+        margin-top: 0.2rem;
+    }
+    .volume-control input[type="range"] {
+        height: 3px;
+    }
+    footer {
+        padding: 0.5rem 0.5rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        width: 170px;
+        transform: translateX(-170px);
+    }
+    .sidebar.expanded {
+        transform: translateX(0);
+    }
+    .logo h1 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .main-nav a {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.5rem;
+    }
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.4rem;
+        padding: 0;
+    }
+    .music-item h3 {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.5rem 0.3rem;
+    }
+    .music-item p {
+        font-size: 0.75rem;
+        padding: 0 0.5rem 0.5rem;
+    }
+    .search-bar input {
+        width: 70px;
+        font-size: 0.8rem;
+    }
+    .search-bar button {
+        width: 26px;
+        height: 26px;
+        font-size: 0.9rem;
+    }
+    .shuffle-button {
+        margin-right: 0.2rem;
+        font-size: 0.9rem;
+    }
+    .now-playing img {
+        width: 22px;
+        height: 22px;
+    }
+    .track-info h4 {
+        font-size: 0.7rem;
+    }
+    .track-info p {
+        font-size: 0.6rem;
+    }
+    .controls button {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+    }
+    .progress-bar {
+        gap: 0.2rem;
+    }
+    .progress {
+        min-width: 30px;
+    }
+    .volume-control {
+        width: 100%;
+    }
+    .volume-control input[type="range"] {
+        height: 2px;
+    }
+}
+
+/* Ensure overlay covers the grid on small screens when sidebar is open */
+@media (max-width: 768px) {
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.3);
+        z-index: 1500;
+    }
+}
+
+/* Add shuffle button styles */
+.shuffle-button {
+    background: none;
+    border: none;
+    color: #FDAC0D;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.shuffle-button:hover {
+    transform: rotate(180deg);
+    color: #e69b0c;
+}
+
+/* Responsive styles for PyramidPlay */
+
+@media (max-width: 1200px) {
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 1.2rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+        padding: 0.2rem;
+    }
+    .player {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .now-playing {
+        width: 100%;
+        min-width: 0;
+    }
+    .now-playing img {
+        width: 40px;
+        height: 40px;
+    }
+    .track-info h4 {
+        font-size: 0.85rem;
+    }
+    .track-info p {
+        font-size: 0.75rem;
+    }
+    .controls button {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .progress-bar {
+        gap: 0.5rem;
+    }
+    .volume-control {
+        width: 90px;
+    }
+} 
